@@ -267,13 +267,13 @@ MAKE_SYSTEM_PROP(STATE_PAUSED,AS_PAUSED);
         NSLog(@"[WARN] Invalid mode for audio player... setting to default.");
         newMode = kAudioSessionCategory_SoloAmbientSound;
     }
-	NSLog(@"[WARN] 'Project.Media.AudioPlayer.audioSessionMode' is deprecated; use 'Project.Media.audioSessionMode'");
+	NSLog(@"[WARN] 'WhatsInTheFridge.Media.AudioPlayer.audioSessionMode' is deprecated; use 'WhatsInTheFridge.Media.audioSessionMode'");
 	[[TiMediaAudioSession sharedSession] setSessionMode:newMode];
 }
 
 -(NSNumber*)audioSessionMode
 {
-	NSLog(@"[WARN] 'Project.Media.AudioPlayer.audioSessionMode' is deprecated; use 'Project.Media.audioSessionMode'");	
+	NSLog(@"[WARN] 'WhatsInTheFridge.Media.AudioPlayer.audioSessionMode' is deprecated; use 'WhatsInTheFridge.Media.audioSessionMode'");	
     return [NSNumber numberWithUnsignedInteger:[[TiMediaAudioSession sharedSession] sessionMode]];
 }
 

@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2011 by Project, Inc. All Rights Reserved.
+ * Copyright (c) 2009-2011 by WhatsInTheFridge, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -511,10 +511,10 @@ bool KrollSetProperty(TiContextRef jsContext, TiObjectRef object, TiStringRef pr
 
 // forward declare these
 
-//@interface ProjectObject : NSObject
+//@interface WhatsInTheFridgeObject : NSObject
 //@end
 
-@interface ProjectObject (Private)
+@interface WhatsInTheFridgeObject (Private)
 -(NSDictionary*)modules;
 @end
 
@@ -532,9 +532,9 @@ void KrollPropertyNames(TiContextRef ctx, TiObjectRef object, TiPropertyNameAccu
 	{
 		id target = [o target];
 		
-		if ([o isKindOfClass:[ProjectObject class]])
+		if ([o isKindOfClass:[WhatsInTheFridgeObject class]])
 		{
-			for (NSString *key in [[(ProjectObject*)o modules] allKeys])
+			for (NSString *key in [[(WhatsInTheFridgeObject*)o modules] allKeys])
 			{
 				TiStringRef value = TiStringCreateWithUTF8CString([key UTF8String]);
 				TiPropertyNameAccumulatorAddName(propertyNames,value);

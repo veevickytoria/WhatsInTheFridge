@@ -206,13 +206,13 @@
         NSLog(@"[WARN] Invalid mode for audio recorder... setting to default.");
         newMode = kAudioSessionCategory_RecordAudio;
     }
-	NSLog(@"[WARN] 'Project.Media.AudioRecorder.audioSessionMode' is deprecated; use 'Project.Media.audioSessionMode'");
+	NSLog(@"[WARN] 'WhatsInTheFridge.Media.AudioRecorder.audioSessionMode' is deprecated; use 'WhatsInTheFridge.Media.audioSessionMode'");
 	[[TiMediaAudioSession sharedSession] setSessionMode:newMode];
 }
 
 -(NSNumber*)audioSessionMode
 {
-	NSLog(@"[WARN] 'Project.Media.AudioRecorder.audioSessionMode' is deprecated; use 'Project.Media.audioSessionMode'");	
+	NSLog(@"[WARN] 'WhatsInTheFridge.Media.AudioRecorder.audioSessionMode' is deprecated; use 'WhatsInTheFridge.Media.audioSessionMode'");	
     return [NSNumber numberWithUnsignedInt:[[TiMediaAudioSession sharedSession] sessionMode]];
 }
 

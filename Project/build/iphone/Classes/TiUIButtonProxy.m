@@ -62,10 +62,10 @@
 {
 	switch(styleCache)
 	{
-		case UIProjectNativeItemInfoLight:
-		case UIProjectNativeItemInfoDark:
+		case UIWhatsInTheFridgeNativeItemInfoLight:
+		case UIWhatsInTheFridgeNativeItemInfoDark:
 			return 18;
-		case UIProjectNativeItemDisclosure:
+		case UIWhatsInTheFridgeNativeItemDisclosure:
 			return 29;
 		default: {
 			break;
@@ -78,10 +78,10 @@
 {
 	switch(styleCache)
 	{
-		case UIProjectNativeItemInfoLight:
-		case UIProjectNativeItemInfoDark:
+		case UIWhatsInTheFridgeNativeItemInfoLight:
+		case UIWhatsInTheFridgeNativeItemInfoDark:
 			return 19;
-		case UIProjectNativeItemDisclosure:
+		case UIWhatsInTheFridgeNativeItemDisclosure:
 			return 31;
 		default: {
 			break;
@@ -95,9 +95,9 @@
 {
 	switch (styleCache)
 	{
-		case UIProjectNativeItemInfoLight:
-		case UIProjectNativeItemInfoDark:
-		case UIProjectNativeItemDisclosure:
+		case UIWhatsInTheFridgeNativeItemInfoLight:
+		case UIWhatsInTheFridgeNativeItemInfoDark:
+		case UIWhatsInTheFridgeNativeItemDisclosure:
 			return suggestedResizing & ~(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 		default: {
 			break;

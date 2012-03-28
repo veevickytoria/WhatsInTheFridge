@@ -34,12 +34,12 @@ MAKE_SYSTEM_PROP(DONE,UIBarButtonSystemItemDone);
 MAKE_SYSTEM_PROP(FLEXIBLE_SPACE,UIBarButtonSystemItemFlexibleSpace);
 MAKE_SYSTEM_PROP(FIXED_SPACE,UIBarButtonSystemItemFixedSpace);
 
-MAKE_SYSTEM_PROP(ACTIVITY,UIProjectNativeItemSpinner);
-MAKE_SYSTEM_PROP(SPINNER,UIProjectNativeItemSpinner);
-MAKE_SYSTEM_PROP(INFO_LIGHT,UIProjectNativeItemInfoLight);
-MAKE_SYSTEM_PROP(INFO_DARK,UIProjectNativeItemInfoDark);
-MAKE_SYSTEM_PROP(DISCLOSURE,UIProjectNativeItemDisclosure);
-MAKE_SYSTEM_PROP(CONTACT_ADD,UIProjectNativeItemContactAdd);
+MAKE_SYSTEM_PROP(ACTIVITY,UIWhatsInTheFridgeNativeItemSpinner);
+MAKE_SYSTEM_PROP(SPINNER,UIWhatsInTheFridgeNativeItemSpinner);
+MAKE_SYSTEM_PROP(INFO_LIGHT,UIWhatsInTheFridgeNativeItemInfoLight);
+MAKE_SYSTEM_PROP(INFO_DARK,UIWhatsInTheFridgeNativeItemInfoDark);
+MAKE_SYSTEM_PROP(DISCLOSURE,UIWhatsInTheFridgeNativeItemDisclosure);
+MAKE_SYSTEM_PROP(CONTACT_ADD,UIWhatsInTheFridgeNativeItemContactAdd);
 
 
 @end

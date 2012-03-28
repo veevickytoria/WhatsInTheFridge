@@ -16,23 +16,23 @@
 {
 	switch (type)
 	{
-		case UIProjectNativeItemInfoLight:
+		case UIWhatsInTheFridgeNativeItemInfoLight:
 		{
 			return [UIButton buttonWithType:UIButtonTypeInfoLight];
 		}
-		case UIProjectNativeItemInfoDark:
+		case UIWhatsInTheFridgeNativeItemInfoDark:
 		{
 			return [UIButton buttonWithType:UIButtonTypeInfoDark];
 		}
-		case UIProjectNativeItemDisclosure:
+		case UIWhatsInTheFridgeNativeItemDisclosure:
 		{
 			return [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 		}
-		case UIProjectNativeItemContactAdd:
+		case UIWhatsInTheFridgeNativeItemContactAdd:
 		{
 			return [UIButton buttonWithType:UIButtonTypeContactAdd];
 		}
-		case UIProjectNativeItemSpinner:
+		case UIWhatsInTheFridgeNativeItemSpinner:
 		{
 			UIActivityIndicatorView *button = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
 			[button startAnimating];

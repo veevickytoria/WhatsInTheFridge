@@ -44,7 +44,7 @@ extern "C" {
 	#define KMETHOD_DEBUG MEMORY_DEBUG
 #endif
 
-// in simulator we redefine to format for Project Developer console
+// in simulator we redefine to format for WhatsInTheFridge Developer console
 
 
 #define TI_INLINE static __inline__
@@ -278,14 +278,14 @@ void TiExceptionThrowWithNameAndReason(NSString * exceptionName, NSString * mess
 #define DEFINE_EXCEPTIONS \
 - (void) throwException:(NSString *) reason subreason:(NSString*)subreason location:(NSString *)location\
 {\
-	NSString * exceptionName = [@"org.project." stringByAppendingString:NSStringFromClass([self class])];\
+	NSString * exceptionName = [@"org.whatsinthefridge." stringByAppendingString:NSStringFromClass([self class])];\
 	NSString * message = [NSString stringWithFormat:@"%@. %@ %@",reason,(subreason!=nil?subreason:@""),(location!=nil?location:@"")];\
 	TiExceptionThrowWithNameAndReason(exceptionName,message);\
 }\
 \
 + (void) throwException:(NSString *) reason subreason:(NSString*)subreason location:(NSString *)location\
 {\
-	NSString * exceptionName = @"org.project";\
+	NSString * exceptionName = @"org.whatsinthefridge";\
 	NSString * message = [NSString stringWithFormat:@"%@. %@ %@",reason,(subreason!=nil?subreason:@""),(location!=nil?location:@"")];\
 	TiExceptionThrowWithNameAndReason(exceptionName,message);\
 }\
@@ -376,28 +376,28 @@ NSLog(@"[WARN] Ti%@.%@ DEPRECATED in %@, in favor of %@: REMOVED in %@",@"tanium
 
  //MUST BE NEGATIVE, as it inhabits the same space as UIBarButtonSystemItem
 enum {
-	UIProjectNativeItemNone = -1, 
-	UIProjectNativeItemSpinner = -2,
-	UIProjectNativeItemProgressBar = -3,
+	UIWhatsInTheFridgeNativeItemNone = -1, 
+	UIWhatsInTheFridgeNativeItemSpinner = -2,
+	UIWhatsInTheFridgeNativeItemProgressBar = -3,
 	
-	UIProjectNativeItemSlider = -4,
-	UIProjectNativeItemSwitch = -5,
-	UIProjectNativeItemMultiButton = -6,
-	UIProjectNativeItemSegmented = -7,
+	UIWhatsInTheFridgeNativeItemSlider = -4,
+	UIWhatsInTheFridgeNativeItemSwitch = -5,
+	UIWhatsInTheFridgeNativeItemMultiButton = -6,
+	UIWhatsInTheFridgeNativeItemSegmented = -7,
 	
-	UIProjectNativeItemTextView = -8,
-	UIProjectNativeItemTextField = -9,
-	UIProjectNativeItemSearchBar = -10,
+	UIWhatsInTheFridgeNativeItemTextView = -8,
+	UIWhatsInTheFridgeNativeItemTextField = -9,
+	UIWhatsInTheFridgeNativeItemSearchBar = -10,
 	
-	UIProjectNativeItemPicker = -11,
-	UIProjectNativeItemDatePicker = -12,
+	UIWhatsInTheFridgeNativeItemPicker = -11,
+	UIWhatsInTheFridgeNativeItemDatePicker = -12,
 	
-	UIProjectNativeItemInfoLight = -13,
-	UIProjectNativeItemInfoDark = -14,
+	UIWhatsInTheFridgeNativeItemInfoLight = -13,
+	UIWhatsInTheFridgeNativeItemInfoDark = -14,
 	
-	UIProjectNativeItemDisclosure = -15,
+	UIWhatsInTheFridgeNativeItemDisclosure = -15,
 	
-	UIProjectNativeItemContactAdd = -16
+	UIWhatsInTheFridgeNativeItemContactAdd = -16
 };
 
 
@@ -535,7 +535,7 @@ extern NSString * const kTiLocalNotification;
 #include "TiThreading.h"
 
 /*
- *	TiThreadPerformOnMainThread should replace all Project instances of
+ *	TiThreadPerformOnMainThread should replace all WhatsInTheFridge instances of
  *	performSelectorOnMainThread, ESPECIALLY if wait is to be yes. That way,
  *	exceptional-case main thread activities can process them outside of the
  *	standard event loop.

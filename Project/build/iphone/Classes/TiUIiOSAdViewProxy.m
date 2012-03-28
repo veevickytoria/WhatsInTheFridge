@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2010 by Project, Inc. All Rights Reserved.
+ * Copyright (c) 2010 by WhatsInTheFridge, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -60,7 +60,7 @@ USE_VIEW_FOR_AUTO_WIDTH
     // Sanity check values
     if (!([arg isEqualToString:[TiUIiOSAdViewProxy portraitSize]] || [arg isEqualToString:[TiUIiOSAdViewProxy landscapeSize]])) {
         [self throwException:@"TiInvalidArg" 
-                   subreason:@"Invalid value for Project.UI.iOS.AdView.adSize"
+                   subreason:@"Invalid value for WhatsInTheFridge.UI.iOS.AdView.adSize"
                     location:CODELOCATION];
     }
     

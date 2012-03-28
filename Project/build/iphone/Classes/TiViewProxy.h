@@ -12,7 +12,7 @@
 
 @protocol TiKeyboardFocusableView
 
-#pragma mark Public Project APIs.
+#pragma mark Public WhatsInTheFridge APIs.
 - (void)focus:(id)args;
 - (void)blur:(id)args;
 
