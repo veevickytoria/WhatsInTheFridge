@@ -1,0 +1,13 @@
+Logfile initialized
+[INFO] logfile = /Users/Victoria/Documents/TitaniumWorkspace/WhatsInTheFridge/Project/build.log
+[DEBUG] /Library/Application Support/Titanium/mobilesdk/osx/1.8.2/android/builder.py simulator What's In The Fridge /Users/Victoria/Documents/Android/SDK/android-sdk-macosx /Users/Victoria/Documents/TitaniumWorkspace/WhatsInTheFridge/Project WhatsInTheFridge 16 WVGA854 
+[INFO] Building What's In The Fridge for Android ... one moment
+[INFO] Titanium SDK version: 1.8.2 (02/23/12 17:46 59b3a90)
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[ERROR] Timed out waiting for emulator to be ready, you may need to close the emulator and try again

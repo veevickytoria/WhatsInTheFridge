@@ -20,5 +20,21 @@ else if (Ti.Platform.osname === 'mobileweb') {
 else {
 	//require and open top level UI component
 	var AppTabGroup = require('ui/AppTabGroup');
-	new AppTabGroup().open();
+	tabGroup = new AppTabGroup();
+	
+	// Add this to app.js (modify as you wish)
+	var unit = Titanium.UI.createWindow({
+	    url: 'runner.js', 
+	    title:'Unit Test'
+	});
+	var tabUnitTest = Titanium.UI.createTab({  
+	    icon:'KS_nav_views.png',
+	    title:'Unit Test',
+	    window:unit
+	});
+	
+	// Assuming you have a tab group and want it to open automatically
+	tabGroup.addTab(tabUnitTest);
+	tabGroup.setActiveTab(tabGroup.tabs[1]);
+	tabGroup.open();
 }
