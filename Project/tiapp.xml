@@ -8,8 +8,8 @@
         <target device="blackberry">false</target>
     </deployment-targets>
     <sdk-version>1.8.2</sdk-version>
-    <id>WhatsInTheFridge</id>
-    <name>What's In The Fridge</name>
+    <id>com.RoseHulman.WhatsInTheFridge</id>
+    <name>Whats In The Fridge</name>
     <version>1.0</version>
     <publisher>Victoria</publisher>
     <url>http://</url>
