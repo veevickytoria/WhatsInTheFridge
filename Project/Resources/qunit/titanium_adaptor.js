@@ -1,12 +1,11 @@
-Titanium.include('qunit/qunit.js');
+Titanium.include("qunit/qunit.js");
 
 // =============================================================================
 // Uncomment the following lines in order to get jsMockito support for mocking 
 // (after following jsMockito install instructions)
 // =============================================================================
-
-Titanium.include('qunit/jshamcrest-min.js');
-Titanium.include('qunit/jsmockito-1.0.4.js');
+Titanium.include("qunit/jshamcrest-min.js");
+Titanium.include("qunit/jsmockito-1.0.4.js");
 JsHamcrest.Integration.QUnit();
 JsMockito.Integration.importTo(this);
 
