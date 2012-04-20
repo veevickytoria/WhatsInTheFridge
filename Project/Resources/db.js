@@ -1,20 +1,28 @@
 var DATABASE_NAME = 'fridge';
+var db;
 
 exports.createDb = function() {
-	var f = Ti.Filesystem.getFile(Ti.Filesystem.applicationSupportDirectory+'/database', 'fridge.sqlite');
-//	If it's there, delete it and reinstall the DB
-	if(f.exists() == true)
-    	f.deleteFile();
-//	install it
-	Ti.Database.install('fridge.sqlite', DATABASE_NAME);
+	//Install database
+	Titanium.Database.install('fridge.sqlite', DATABASE_NAME);
 };
 
 exports.selectItem = function(id) {
 	return selectById(id);
 };
 
+exports.selectAllItems = function(){
+	return sqlExecute(function(result){
+				return pushData(result);
+			   }, 
+			   function(result){
+			   	alert("An error occured when selecting all items");
+			   	return null;
+			   },
+			   "select ROWID, * from item");
+};
+
 exports.updateItem = function(id, newItem) {
-	sqlExecute(function(result){
+	return sqlExecute(function(result){
 				return selectById(id);
 			   }, 
 			   function(result){
@@ -25,18 +33,19 @@ exports.updateItem = function(id, newItem) {
 };
 
 exports.addItem = function(item) {
-	sqlExecute(function(result){
+	return sqlExecute(function(result){
 				return selectByName(item.name);
 			   }, 
 			   function(result){
 			   	alert("An error occured when inserting itemName = " + item.name);
 			   	return null;
 			   },
-			   'insert into item values ?', item);
+			   'insert into item (name, description, expirationDate, location, category, reminder) values (?, ?, ?, ?, ?, ?)', 
+			   item.name, item.description, item.expDate, item.location, item.category, item.reminder);
 };
 
 exports.deleteItem = function(id) {
-	sqlExecute(function(result){
+	return sqlExecute(function(result){
 				return result;
 			   }, 
 			   function(result){
@@ -48,42 +57,40 @@ exports.deleteItem = function(id) {
 
 //helper methods
 var sqlExecute = function(onSuccess, onError, sql, args){
-	var db = Ti.Database.open(DATABASE_NAME);
-    var args = arguments; 
-    // Remove the onSuccess, onError and sql from the arguments
-    args.shift(); 
-    args.shift();
-    args.shift();
+	db = Ti.Database.open(DATABASE_NAME);
+    var vals = [];
+    for (i=3;i<arguments.length;i++){
+    	vals.push(arguments[i]);
+    }
     //  Call the execute method
-    var result = db.execute(sql, args);
-    db.close();
+    var result = db.execute(sql, vals);
     if(result === false ){
-        onError(result);
+        return onError(result);
     }else{
-        onSuccess(result); 
+        return onSuccess(result); 
     }
 }
 
 var selectById = function(id){
-	sqlExecute(function(result){
+	return sqlExecute(function(result){
 				return pushData(result);
 			   }, 
 			   function(result){
 			   	alert("An error occured when selecting ROWID = " + id);
 			   	return null;
 			   },
-			   "select * from item where ROWID = ?", id);
+			   "select ROWID, * from item where ROWID = ?", id);
 };
 
 var selectByName = function(name){
-	sqlExecute(function(result){
+	return sqlExecute(function(result){
 				return pushData(result);
 			   }, 
 			   function(result){
 			   	alert("An error occured when selecting itemName = " + name);
 			   	return null;
 			   },
-			   "select * from item where name = ?", name);
+			   "select ROWID, * from item where name = ?", name);
 };
 
 var pushData = function(rows){
@@ -91,7 +98,7 @@ var pushData = function(rows){
 	while (rows.isValidRow()) {
 		data.push({id:rows.fieldByName('ROWID'), name:rows.fieldByName('name'), 
 				   description:rows.fieldByName('description'), expDate:rows.fieldByName('expirationDate'),
-				   location:rows.fieldByName('location'), category:rows.fieldByName('category')});
+				   location:rows.fieldByName('location'), category:rows.fieldByName('category'), reminder: rows.fieldByName('reminder')});
 		rows.next();
 		}
 		return data;
