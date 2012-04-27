@@ -17,11 +17,12 @@ exports.ListWindow = function(args) {
 			new AddWindow().open();
 		});
 		self.rightNavButton = addBtn;
+
 	}
 	
-	// tableview.addEventListener('click', function(e) {
-		// createConfirmDialog(e.row.name, e.row.description).show();
-	// });
+	tableview.addEventListener('click', function(e) {
+		createConfirmDialog(e.row.id, e.row.title).show();
+	});
 	
 	Ti.App.addEventListener('app:updateTables', function() {
 		tableview.setData(getTableData());
@@ -39,7 +40,7 @@ var getTableData = function() {
 	if(items != null){
 		for (var i = 0; i < items.length; i++) {
 			row = Ti.UI.createTableViewRow({
-				id: items[i].itemId,
+				id: items[i].id,
 				title: items[i].name,
 				color: '#000',
 				font: {
@@ -52,46 +53,34 @@ var getTableData = function() {
 	return data;
 };
 
-// var createConfirmDialog = function(id, title, isDone) {
-	// var db = require('db');
-	// var buttons, doneIndex, clickHandler;
-// 	
-	// if (isDone) {
-		// buttons = ['Delete', 'Cancel'];	
-		// clickHandler = function(e) {
-			// if (e.index === 0) {
-				// deleteItem(db, id, isDone);
-				// Ti.App.fireEvent('app:updateTables');
-			// }
-		// };
-	// } else {
-		// buttons = ['Done', 'Delete', 'Cancel'];
-		// clickHandler = function(e) {
-			// if (e.index === 0) {
-				// db.updateItem(id, 1);
-				// Ti.App.fireEvent('app:updateTables');
-			// } else if (e.index === 1) {
-				// deleteItem(db, id, isDone);
-				// Ti.App.fireEvent('app:updateTables');
-			// }
-		// };
-	// }
-// 	
-	// var confirm = Ti.UI.createAlertDialog({
-		// title: 'Change Task Status',
-		// message: title,
-		// buttonNames: buttons
-	// });
-	// confirm.addEventListener('click', clickHandler);
-// 	
-	// return confirm;
-// };
-// 
-// var deleteItem = function(db, id, isDone) {
-	// if (platform === 'mobileweb') {
-		// db.deleteItem(id, isDone);
-	// }
-	// else {
-		// db.deleteItem(id);
-	// }
-// };
+var createConfirmDialog = function(id, title) {
+	var db = require('db');
+	var EditWindow = require('ui/EditWindow').EditWindow;
+	var buttons = ['Edit', 'Delete', 'Cancel'];
+	var confirm = Ti.UI.createAlertDialog({
+		title: 'Edit',
+		message: title,
+		buttonNames: buttons
+	});
+	
+	confirm.addEventListener('click', function(e) {
+		if (e.index === 0) {
+			new EditWindow(id).open();
+		} else if (e.index === 1) {
+			var delConfirm =  Titanium.UI.createAlertDialog({
+        		message:'Delete ' + title +' ?'
+   			 });
+    		delConfirm.buttonNames = ['Yes', 'No'];
+    		delConfirm.addEventListener('click', function(e) {
+    			if(e.index === 0){
+    				db.deleteItem(id);
+					Ti.App.fireEvent('app:updateTables');
+    			}else if(e.index ===1){
+    				return;
+    			}
+    		});
+    		delConfirm.show();
+		}
+	});
+	return confirm;
+};

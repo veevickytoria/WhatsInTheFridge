@@ -29,7 +29,8 @@ exports.updateItem = function(id, newItem) {
 			   	alert("An error occured when updating ROWID = " + id);
 			   	return null;
 			   },
-			   'update item set values ? where ROWID = ?', newItem, id);
+			   "update item set name=?, description=?, expirationDate=?, location=?, category=?, reminder=? where ROWID=?", 
+			   toSafeString(newItem.name), toSafeString(newItem.description), toSafeString(newItem.expDate), toSafeString(newItem.location), toSafeString(newItem.category), toSafeString(newItem.reminder), id);
 };
 
 exports.addItem = function(item) {
@@ -73,7 +74,7 @@ var sqlExecute = function(onSuccess, onError, sql, args){
 
 var selectById = function(id){
 	return sqlExecute(function(result){
-				return pushData(result);
+				return pushData(result)[0];
 			   }, 
 			   function(result){
 			   	alert("An error occured when selecting ROWID = " + id);
@@ -103,3 +104,7 @@ var pushData = function(rows){
 		}
 		return data;
 };
+
+var toSafeString = function(o){
+	return (o === undefined || o === null)? "":o.toString();
+}
