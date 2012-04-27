@@ -1,32 +1,20 @@
-function AppTabGroup() {
-	//declare module dependencies
-	var AppWindow = require('ui/AppWindow');
-	
-	//create module instance
+exports.AppTabGroup = function() {
 	var self = Ti.UI.createTabGroup();
-	
-	//create app tabs
-	var win1 = new AppWindow(L('home')),
-		win2 = new AppWindow(L('settings'));
-	
-	var tab1 = Ti.UI.createTab({
-		title: L('home'),
-		icon: '/images/KS_nav_ui.png',
-		window: win1
+
+	//loop through tab objects and add them to the tab group
+	for (var i = 0, l = arguments.length; i < l; i++) {
+		var tab = Ti.UI.createTab(arguments[i]);
+		//on initialization, we track the current tab as the first one added
+		if (i === 0) {
+			self.currentTab = tab;
+		}
+		self.addTab(tab);
+	}
+
+	//track the current tab for the tab group
+	self.addEventListener('focus', function(e) {
+		self.currentTab = e.tab;
 	});
-	win1.containingTab = tab1;
-	
-	var tab2 = Ti.UI.createTab({
-		title: L('settings'),
-		icon: '/images/KS_nav_views.png',
-		window: win2
-	});
-	win2.containingTab = tab2;
-	
-	self.addTab(tab1);
-	self.addTab(tab2);
-	
+
 	return self;
 };
-
-module.exports = AppTabGroup;

@@ -18,23 +18,47 @@ else if (Ti.Platform.osname === 'mobileweb') {
 	alert('Mobile web is not yet supported by this template');
 }
 else {
-	//require and open top level UI component
-	var AppTabGroup = require('ui/AppTabGroup');
-	tabGroup = new AppTabGroup();
+	var globals = {};
 	
-	// Add this to app.js (modify as you wish)
-	var unit = Titanium.UI.createWindow({
-	    url: 'runner.js', 
-	    title:'Unit Test'
-	});
-	var tabUnitTest = Titanium.UI.createTab({  
-	    icon:'KS_nav_views.png',
-	    title:'Unit Test',
-	    window:unit
-	});
-	
-	// Assuming you have a tab group and want it to open automatically
-	tabGroup.addTab(tabUnitTest);
-	tabGroup.setActiveTab(tabGroup.tabs[1]);
-	tabGroup.open();
+	(function() {
+		var AppTabGroup = require('ui/AppTabGroup').AppTabGroup,
+			ListWindow = require('ui/ListWindow').ListWindow,
+			AddWindow = require('ui/AddWindow').AddWindow;
+		
+		// Initialize local storage
+		require('db').createDb();
+		
+		//create our global tab group	
+		globals.tabs = new AppTabGroup(
+			{
+				title: "What's in the Fridge?",
+				icon: 'images/KS_nav_ui.png',
+				window: new ListWindow({
+					title: 'Items',
+					backgroundColor: '#fff',
+					navBarHidden: false,
+					activity: {
+						onCreateOptionsMenu: function(e) {
+							var menu = e.menu;
+						    var menuItem = menu.add({ title: "Add Item" });
+						    menuItem.setIcon("images/ic_menu_add.png");
+						    menuItem.addEventListener("click", function(e) {
+						        new AddWindow().open();
+						    });
+						}
+					}
+				})
+			},
+			{
+				title: 'Unit Test',
+				icon: 'images/KS_nav_views.png',
+				window: Titanium.UI.createWindow({
+	    			url: 'runner.js', 
+	    			title:'Unit Test'
+				})
+			}
+		);
+		
+		globals.tabs.open();
+	})();
 }

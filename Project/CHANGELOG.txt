@@ -1,1 +1,6 @@
-4/14/2012: Set up unit testing framework. Added test cases for database connection and addItem functions.
+4/14/2012 zhengc: Set up unit testing framework. 
+				  Added test cases for database connection and addItem functions.
+4/20/2012 zhengc: Modified db unit testing cases. 
+				  Implemented db functions for item table. 
+				  Implemented listview of items and adding items. 
+				  Updated db structure.
