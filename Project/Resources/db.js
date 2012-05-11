@@ -10,7 +10,7 @@ exports.selectItem = function(id) {
 	return selectById(id);
 };
 
-exports.selectAllItems = function(){
+exports.selectAllItems = function(ordering){
 	return sqlExecute(function(result){
 				return pushData(result);
 			   }, 
@@ -18,7 +18,7 @@ exports.selectAllItems = function(){
 			   	alert("An error occured when selecting all items");
 			   	return null;
 			   },
-			   "select ROWID, * from item");
+			   "select ROWID, * from item " + ordering);
 };
 
 exports.updateItem = function(id, newItem) {
@@ -48,12 +48,25 @@ exports.addItem = function(item) {
 exports.deleteItem = function(id) {
 	return sqlExecute(function(result){
 				return result;
-			   }, 
-			   function(result){
-			   	alert("An error occured when deleting ROWID = " + id);
-			   	return result;
-			   },
-			   'delete from item where ROWID = ?', id);
+		}, 
+		function(result){
+			alert("An error occured when deleting ROWID = " + id);
+			return result;
+		},
+		'delete from item where ROWID = ?',
+		id);
+};
+
+exports.addReminder = function(reminder, item) {
+	 return sqlExecute(function(result){
+			 return reminder;
+		},
+		function(result){
+			alert("An error occured when adding the reminder to the reminder table");
+			return null;
+		},
+		'insert into reminder (time, enabled) values (?,?)',
+		reminder.date, reminder.enabled);
 };
 
 //helper methods
@@ -94,6 +107,7 @@ var selectByName = function(name){
 			   "select ROWID, * from item where name = ?", name);
 };
 
+//item only?
 var pushData = function(rows){
 	var data = [];
 	while (rows.isValidRow()) {
@@ -102,7 +116,31 @@ var pushData = function(rows){
 				   location:rows.fieldByName('location'), category:rows.fieldByName('category'), reminder: rows.fieldByName('reminder')});
 		rows.next();
 		}
-		return data;
+	return data;
+};
+
+var selectReminderID = function(reminder, item) {
+	return sqlExecute(function(result){
+				return addReminderToItem(result.fieldByName('ROWID'), item);
+			   }, 
+			   function(result){
+			   	alert("An error occured when selecting reminderDate = " + reminder.date);
+			   	return null;
+			   },
+			   "select ROWID from reminder where date = ?", 
+			   reminder.date);
+};
+
+var addReminderToItem = function(reminderID, item) {
+	return sqlExecute(function(result){
+		return result;
+	},
+	function(result){
+		alert("An error occcured when adding the reminder to the item " + item.name);
+		return null;
+	},
+	"update item set reminder = ? where ROWID = ?",
+	reminderID)
 };
 
 var toSafeString = function(o){

@@ -1,4 +1,3 @@
-
 //mock database
 var mockDB = mock(require('db'));
 mockDB.createDb();
