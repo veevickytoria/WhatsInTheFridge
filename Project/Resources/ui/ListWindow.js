@@ -1,6 +1,8 @@
 var platform = Ti.Platform.osname;
 
 exports.ListWindow = function(args) {
+	getTableData();
+	
 	var AddWindow = require('ui/AddWindow').AddWindow;
 	var self = Ti.UI.createWindow(args);
 	var tableview = Ti.UI.createTableView();
@@ -35,7 +37,7 @@ var getTableData = function() {
 	var db = require('db');
 	var data = [];
 	var row = null;
-	var items = db.selectAllItems();
+	var items = db.selectAllItems("");
 	
 	if(items != null){
 		for (var i = 0; i < items.length; i++) {
