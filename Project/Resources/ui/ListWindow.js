@@ -1,9 +1,14 @@
 var platform = Ti.Platform.osname;
+var sortTypes = ["",
+				 "order by name asc",
+				 "order by name desc"];
+				 
+var sortIndex = 0;
 
 exports.ListWindow = function(args) {
 	getTableData();
 	
-	var AddWindow = require('ui/AddWindow').AddWindow;
+	//var AddWindow = require('ui/AddWindow').AddWindow;
 	var self = Ti.UI.createWindow(args);
 	var tableview = Ti.UI.createTableView();
 	
@@ -30,6 +35,11 @@ exports.ListWindow = function(args) {
 		tableview.setData(getTableData());
 	});
 	
+	Ti.App.addEventListener('app:changeSort', function(e) {
+		sortIndex = e.sortType.number;
+		tableview.setData(getTableData());
+	});
+	
 	return self;
 };
 
@@ -37,7 +47,7 @@ var getTableData = function() {
 	var db = require('db');
 	var data = [];
 	var row = null;
-	var items = db.selectAllItems("");
+	var items = db.selectAllItems(sortTypes[sortIndex]);
 	
 	if(items != null){
 		for (var i = 0; i < items.length; i++) {

@@ -24,6 +24,7 @@ else {
 		var AppTabGroup = require('ui/AppTabGroup').AppTabGroup,
 			ListWindow = require('ui/ListWindow').ListWindow,
 			AddWindow = require('ui/AddWindow').AddWindow;
+			SortWindow = require('ui/SortWindow').SortWindow;
 		
 		// Initialize local storage
 		require('db').createDb();
@@ -40,10 +41,14 @@ else {
 					activity: {
 						onCreateOptionsMenu: function(e) {
 							var menu = e.menu;
-						    var menuItem = menu.add({ title: "Add Item" });
-						    menuItem.setIcon("images/ic_menu_add.png");
-						    menuItem.addEventListener("click", function(e) {
+						    var menuAddItem = menu.add({ title: "Add Item" });
+						    menuAddItem.setIcon("images/ic_menu_add.png");
+						    menuAddItem.addEventListener("click", function(e) {
 						        new AddWindow().open();
+						    });
+						    var menuChangeSort = menu.add({ title: "Sort Style" });
+						    menuChangeSort.addEventListener("click", function(e) {
+						        new SortWindow().open();
 						    });
 						}
 					}
