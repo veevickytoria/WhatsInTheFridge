@@ -9,6 +9,7 @@ exports.ListWindow = function(args) {
 	getTableData();
 	
 	var AddWindow = require('ui/AddWindow').AddWindow;
+	var SortWindow = require('ui/SortWindow').SortWindow;
 	var self = Ti.UI.createWindow(args);
 	var tableview = Ti.UI.createTableView();
 	
@@ -20,10 +21,22 @@ exports.ListWindow = function(args) {
 		var addBtn = Ti.UI.createButton({
 			title:'+'
 		});
+		
+		var changeSortButton = Ti.UI.createButton({
+			title:'sort'
+		});
+		
+		
 		addBtn.addEventListener('click', function() {
 			new AddWindow().open();
 		});
+		
+		changeSortButton.addEventListener('click', function() {
+			new SortWindow().open();
+		});
+		
 		self.rightNavButton = addBtn;
+		self.leftNavButton = changeSortButton;
 
 	}
 	
@@ -36,7 +49,7 @@ exports.ListWindow = function(args) {
 	});
 	
 	Ti.App.addEventListener('app:changeSort', function(e) {
-		sortIndex = e.sortType.number;
+		sortIndex = e.sortType;
 		tableview.setData(getTableData());
 	});
 	

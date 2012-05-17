@@ -31,7 +31,7 @@ exports.SortWindow = function() {
 	});
 	
 	addButton.addEventListener('click', function() {
-		Ti.App.fireEvent('app:changeSort', {sortType : sortTypeField.getSelectedRow(0)});
+		Ti.App.fireEvent('app:changeSort', {sortType : sortTypeField.getSelectedRow(0).number});
 		
 		sortNumber = sortTypeField.getSelectedRow(0).number;
 		
