@@ -8,7 +8,7 @@ var sortIndex = 0;
 exports.ListWindow = function(args) {
 	getTableData();
 	
-	//var AddWindow = require('ui/AddWindow').AddWindow;
+	var AddWindow = require('ui/AddWindow').AddWindow;
 	var self = Ti.UI.createWindow(args);
 	var tableview = Ti.UI.createTableView();
 	

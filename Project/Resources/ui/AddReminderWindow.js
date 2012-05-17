@@ -3,7 +3,7 @@ exports.AddReminderWindow = function(win) {
 	//var reminderEnabled;
 	
 	var self = Ti.UI.createWindow({
-		modal: true,
+		// modal: true,
 		title: 'Add Reminder',
 		backgroundColor: '#fff'
 	});

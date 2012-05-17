@@ -66,8 +66,12 @@ exports.EditWindow = function(id) {
 	});
 	
 	reminderButton.addEventListener('click', function() {
-		Ti.API.info("------------------------------> item.reminder at window call" + item.reminder);
-		new EditReminderWindow(self, new Date(Date.parse(item.reminder))).open();
+		if (item.reminder == null){
+			Ti.API.info("------------------------------> item.reminder at window call " + item.reminder);
+			new EditReminderWindow(self, new Date()).open();
+		} else {
+			new EditReminderWindow(self, new Date(Date.parse(item.reminder))).open();
+		}
 	});
 	
 	var expirationButton = Ti.UI.createButton({
@@ -83,7 +87,12 @@ exports.EditWindow = function(id) {
 	});
 	
 	expirationButton.addEventListener('click', function() {
-		new EditExpirationWindow(self, new Date(Date.parse(item.expDate))).open();
+		if (item.expDate == null){
+			Ti.API.info("------------------------------> item.expdate at window call " + item.reminder);
+			new EditExpirationWindow(self, new Date()).open();
+		} else {
+			new EditExpirationWindow(self, new Date(Date.parse(item.expDate))).open();
+		}
 	});
 	
 	var updateButton = Ti.UI.createButton({

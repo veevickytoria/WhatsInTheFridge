@@ -1,7 +1,7 @@
 exports.EditReminderWindow = function(win, reminder) {
 	
 	var self = Ti.UI.createWindow({
-		modal: true,
+		// modal: true,
 		title: 'Edit Reminder',
 		backgroundColor: '#fff'
 	});
@@ -30,6 +30,12 @@ exports.EditReminderWindow = function(win, reminder) {
 	reminderTimeField.addEventListener('change',function(e){
     	reminderTimeField.value = e.value;
 	});
+	
+	Ti.API.info("REMINDER VALUE ===============================>" + reminder);
+	if (reminder == '') {
+		reminderDateField.fireEvent('change', {value : new Date()});
+		reminderTimeField.fireEvent('change', {value : new Date()});
+	}
 	
 	var editButton = Ti.UI.createButton({
 		title: 'Update',

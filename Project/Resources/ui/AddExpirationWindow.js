@@ -1,7 +1,7 @@
 exports.AddExpirationWindow = function(win) {
 	
 	var self = Ti.UI.createWindow({
-		modal: true,
+		// modal: true,
 		title: 'Add Expiration Date',
 		backgroundColor: '#fff'
 	});
@@ -44,8 +44,8 @@ exports.AddExpirationWindow = function(win) {
 		var expiration = expirationDateField.value;
 		
 		//get the time without changing the date
-		expiration.setHours(expirationTimeField.value.getHours());
-		expiration.setMinutes(expirationTimeField.value.getMinutes());
+		//expiration.setHours(expirationTimeField.value.getHours());
+		//expiration.setMinutes(expirationTimeField.value.getMinutes());
 		
 		win.fireEvent('expirationChoice', {expirationEvent : expiration});
 		
@@ -65,7 +65,7 @@ exports.AddExpirationWindow = function(win) {
 	});
 	
 	self.add(expirationDateField);
-	self.add(expirationTimeField);
+	//self.add(expirationTimeField);
 	self.add(addButton);
 	self.add(cancelButton);
 	

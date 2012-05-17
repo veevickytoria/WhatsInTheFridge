@@ -1,7 +1,7 @@
 exports.EditExpirationWindow = function(win, expiration) {
 	
 	var self = Ti.UI.createWindow({
-		modal: true,
+		// modal: true,
 		title: 'Edit Expiration Date',
 		backgroundColor: '#fff'
 	});
@@ -42,9 +42,9 @@ exports.EditExpirationWindow = function(win, expiration) {
 	editButton.addEventListener('click', function() {
 		var expiration = expirationDateField.value;
 		
-		expiration.setHours(expirationTimeField.value.getHours());
-		expiration.setMinutes(expirationTimeField.value.getMinutes());
-		expiration.setSeconds(expirationTimeField.value.getSeconds());
+		//expiration.setHours(expirationTimeField.value.getHours());
+		//expiration.setMinutes(expirationTimeField.value.getMinutes());
+		//expiration.setSeconds(expirationTimeField.value.getSeconds());
 		
 		win.fireEvent('expirationChoice', {expirationEvent : expiration});
 		
@@ -64,7 +64,7 @@ exports.EditExpirationWindow = function(win, expiration) {
 	});
 	
 	self.add(expirationDateField);
-	self.add(expirationTimeField);
+	//self.add(expirationTimeField);
 	self.add(editButton);
 	self.add(cancelButton);
 	
