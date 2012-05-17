@@ -1,7 +1,6 @@
 exports.AddExpirationWindow = function(win) {
 	
 	var self = Ti.UI.createWindow({
-		// modal: true,
 		title: 'Add Expiration Date',
 		backgroundColor: '#fff'
 	});
@@ -19,19 +18,6 @@ exports.AddExpirationWindow = function(win) {
 	
 	expirationDateField.fireEvent('change', {value : new Date()});
 	
-	var expirationTimeField = Ti.UI.createPicker({
-		top: '150dp',
-		hintText: 'Reminder Time',
-		// minDate: new Date(),
-		type: Titanium.UI.PICKER_TYPE_TIME
-	});
-	
-	expirationTimeField.addEventListener('change',function(e){
-    	expirationTimeField.value = e.value;
-	});
-	
-	expirationTimeField.fireEvent('change', {value : new Date()});
-	
 	var addButton = Ti.UI.createButton({
 		title: 'Add',
 		width: '120dp',
@@ -43,10 +29,8 @@ exports.AddExpirationWindow = function(win) {
 	addButton.addEventListener('click', function() {
 		var expiration = expirationDateField.value;
 		
-		//get the time without changing the date
-		//expiration.setHours(expirationTimeField.value.getHours());
-		//expiration.setMinutes(expirationTimeField.value.getMinutes());
-		
+		//defult it to 8am on the date
+		expiration.setHours(8,0,0);
 		win.fireEvent('expirationChoice', {expirationEvent : expiration});
 		
 		self.close();
@@ -65,7 +49,6 @@ exports.AddExpirationWindow = function(win) {
 	});
 	
 	self.add(expirationDateField);
-	//self.add(expirationTimeField);
 	self.add(addButton);
 	self.add(cancelButton);
 	
