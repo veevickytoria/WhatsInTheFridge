@@ -1,16 +1,17 @@
 exports.AddReminderWindow = function(win) {
-	//var reminderTime;
-	//var reminderEnabled;
+	var addReminderTitle = L('addReminderTitle');
+	var addReminderAddButton = L('addReminderAddButton');
+	var addReminderCancelButton = L('addReminderCancelButton');
+	
 	
 	var self = Ti.UI.createWindow({
 		// modal: true,
-		title: 'Add Reminder',
+		title: addReminderTitle,
 		backgroundColor: '#fff'
 	});
 	
 	var reminderDateField = Ti.UI.createPicker({
 		top: '10dp',
-		hintText: 'Reminder Date',
 		minDate: new Date(),
 		type: Titanium.UI.PICKER_TYPE_DATE,
 	});
@@ -25,8 +26,7 @@ exports.AddReminderWindow = function(win) {
 	
 	var reminderTimeField = Ti.UI.createPicker({
 		top: '150dp',
-		hintText: 'Reminder Time',
-		// minDate: new Date(),
+		minDate: new Date(),
 		type: Titanium.UI.PICKER_TYPE_TIME
 	});
 	
@@ -36,15 +36,8 @@ exports.AddReminderWindow = function(win) {
 	
 	reminderDateField.fireEvent('change', {value : new Date()});
 	
-	// var enableBoxField = Ti.UI.createSwitch({
-		// width: '300dp',
-		// height: '45dp',
-		// top: '300dp',
-		// hintText: 'Enable Button'
-	// });
-	
 	var addButton = Ti.UI.createButton({
-		title: 'Add',
+		title: addReminderAddButton,
 		width: '120dp',
 		height: '40dp',
 		top: '400dp',
@@ -60,14 +53,13 @@ exports.AddReminderWindow = function(win) {
 		//do I need to set seconds?
 		reminder.setSeconds(reminderTimeField.value.getSeconds());
 		
-		Titanium.API.info("--------------------------------->reminder: " + reminder);
 		win.fireEvent('reminderChoice', {reminderEvent : reminder});
 		
 		self.close();
 	});
 	
 	var cancelButton = Ti.UI.createButton({
-		title: 'Cancel',
+		title: addReminderCancelButton,
 		width: '120dp',
 		height: '40dp',
 		top: '400dp',
@@ -80,7 +72,6 @@ exports.AddReminderWindow = function(win) {
 	
 	self.add(reminderDateField);
 	self.add(reminderTimeField);
-	// self.add(enableBoxField);
 	self.add(addButton);
 	self.add(cancelButton);
 	

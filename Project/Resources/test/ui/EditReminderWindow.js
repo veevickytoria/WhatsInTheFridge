@@ -1,14 +1,15 @@
 exports.EditReminderWindow = function(win, reminder) {
+	var editReminderTitle = L('editReminderTitle');
+	var editReminderUpdateButton = L('editReminderUpdateButton');
+	var editReminderCancelButton = L('editReminderCancelButton');
 	
 	var self = Ti.UI.createWindow({
-		// modal: true,
-		title: 'Edit Reminder',
+		title: editReminderTitle,
 		backgroundColor: '#fff'
 	});
 	
 	var reminderDateField = Ti.UI.createPicker({
 		top: '10dp',
-		hintText: 'Reminder Date',
 		value: reminder,
 		minDate: new Date(),
 		type: Titanium.UI.PICKER_TYPE_DATE
@@ -21,7 +22,6 @@ exports.EditReminderWindow = function(win, reminder) {
 	
 	var reminderTimeField = Ti.UI.createPicker({
 		top: '150dp',
-		hintText: 'Reminder Time',
 		value: reminder,
 		minDate: new Date(),
 		type: Titanium.UI.PICKER_TYPE_TIME
@@ -31,14 +31,13 @@ exports.EditReminderWindow = function(win, reminder) {
     	reminderTimeField.value = e.value;
 	});
 	
-	Ti.API.info("REMINDER VALUE ===============================>" + reminder);
 	if (reminder == '') {
 		reminderDateField.fireEvent('change', {value : new Date()});
 		reminderTimeField.fireEvent('change', {value : new Date()});
 	}
 	
 	var editButton = Ti.UI.createButton({
-		title: 'Update',
+		title: editReminderUpdateButton,
 		width: '120dp',
 		height: '40dp',
 		top: '400dp',
@@ -55,7 +54,7 @@ exports.EditReminderWindow = function(win, reminder) {
 	});
 	
 	var cancelButton = Ti.UI.createButton({
-		title: 'Cancel',
+		title: editReminderCancelButton,
 		width: '120dp',
 		height: '40dp',
 		top: '400dp',

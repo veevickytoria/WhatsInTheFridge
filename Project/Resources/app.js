@@ -10,12 +10,20 @@
  *  
  */
 
+var appTitaniumVerCheckAlert = L('appTitaniumVerCheckAlert');
+var appTitaniumMobWebCheckAlert = L('appTitaniumMobWebCheckAlert');
+var appListWindowTitle = L('appListWindowTitle');
+var appListTabTitle = L('appListTabTitle');
+var appTestTabTitle = L('appTestTabTitle');
+
 //bootstrap and check dependencies
 if (Ti.version < 1.8 ) {
-	alert('Sorry - this application template requires Titanium Mobile SDK 1.8 or later');
+	var appTitaniumVerCheckAlert = L('appTitaniumVerCheckAlert');
+	alert(appTitaniumVerCheckAlert);
 }
 else if (Ti.Platform.osname === 'mobileweb') {
-	alert('Mobile web is not yet supported by this template');
+	var appTitaniumMobWebCheckAlert = L('appTitaniumMobWebCheckAlert');
+	alert(appTitaniumMobWebCheckAlert);
 }
 else {
 	var globals = {};
@@ -23,8 +31,12 @@ else {
 	(function() {
 		var AppTabGroup = require('ui/AppTabGroup').AppTabGroup,
 			ListWindow = require('ui/ListWindow').ListWindow,
-			AddWindow = require('ui/AddWindow').AddWindow;
+			AddWindow = require('ui/AddWindow').AddWindow,
 			SortWindow = require('ui/SortWindow').SortWindow;
+			
+		var appListWindowTitle = L('appListWindowTitle');
+		var appListTabTitle = L('appListTabTitle');
+		var appTestTabTitle = L('appTestTabTitle');
 		
 		// Initialize local storage
 		require('db').createDb();
@@ -32,21 +44,25 @@ else {
 		//create our global tab group	
 		globals.tabs = new AppTabGroup(
 			{
-				title: "What's in the Fridge?",
+				title: appListTabTitle,
 				icon: 'images/KS_nav_ui.png',
 				window: new ListWindow({
-					title: 'Items',
+					title: appListWindowTitle,
 					backgroundColor: '#fff',
 					navBarHidden: false,
 					activity: {
 						onCreateOptionsMenu: function(e) {
 							var menu = e.menu;
-						    var menuAddItem = menu.add({ title: "Add Item" });
+							
+							var addMenuString = L('appAddItem');
+							var changeSortString = L('appChangeSort');
+							
+						    var menuAddItem = menu.add({ title: addMenuString });
 						    menuAddItem.setIcon("images/ic_menu_add.png");
 						    menuAddItem.addEventListener("click", function(e) {
 						        new AddWindow().open();
 						    });
-						    var menuChangeSort = menu.add({ title: "Sort Style" });
+						    var menuChangeSort = menu.add({ title: changeSortString });
 						    menuChangeSort.addEventListener("click", function(e) {
 						        new SortWindow().open();
 						    });
@@ -55,11 +71,11 @@ else {
 				})
 			},
 			{
-				title: 'Unit Test',
+				title: appTestTabTitle,
 				icon: 'images/KS_nav_views.png',
 				window: Titanium.UI.createWindow({
 	    			url: 'runner.js', 
-	    			title:'Unit Test'
+	    			title: appTestTabTitle
 				})
 			}
 		);

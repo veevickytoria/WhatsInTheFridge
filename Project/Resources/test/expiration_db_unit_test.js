@@ -4,9 +4,9 @@ var mockDB = mock(require('db'));
 mockDB.createDb();
 verify(mockDB).createDb();
 
-var expiration1 = expiration "2012-05-15 10:00:00";
-var expiration2 = expiration "2012-04-01 12:00;00";
-var expiration3 = expiration "2012-05-20 12:00;00";
+var expiration1 = "2012-05-15 10:00:00";
+var expiration2 = "2012-04-01 12:00;00";
+var expiration3 = "2012-05-20 12:00;00";
 var item1 = {id: 1, name:"ice cream", description:"loving it!", expiration: "2012-05-15 10:00:00"};
 var item2 = {id: 2, name:"milk"};
 var item3 = {id: 1, name:"ice cream", description:"loving it!", expiration: "2012-05-15 10:00:00"};

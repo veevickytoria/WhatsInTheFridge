@@ -1,4 +1,12 @@
 exports.AddWindow = function() {
+	var addItemNameText 		= L('addItemNameText');
+	var addItemDescText 		= L('addItemDescText');
+	var addItemReminderButton 	= L('addItemReminderButton');
+	var addItemExpirationButton = L('addItemExpirationButton');
+	var addItemAddButton 		= L('addItemAddButton');
+	var addItemCancelButton 	= L('addItemCancelButton');
+	var addItemTitle			= L('addItemTitle');
+	
 	var AddReminderWindow = require('ui/AddReminderWindow').AddReminderWindow;
 	var AddExpirationWindow = require('ui/AddExpirationWindow').AddExpirationWindow;
 	
@@ -7,20 +15,15 @@ exports.AddWindow = function() {
 	
 	var self = Ti.UI.createWindow({
 		modal: true,
-		title: 'Add Item',
+		title: addItemTitle,
 		backgroundColor: '#fff'
 	});
-	
-	// Ti.App.addEventListener('reminderChoice', function(e) {
-		// Ti.API.info("=====================================>" + e.reminderEvent);
-		// reminder = e.reminderEvent;
-	// });
 	
 	var itemNameField = Ti.UI.createTextField({
 		width: '300dp',
 		height: '45dp',
 		top: '20dp',
-		hintText: 'Item Name',
+		hintText: addItemNameText,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		returnKeyType: Ti.UI.RETURNKEY_NEXT
 	});
@@ -35,7 +38,7 @@ exports.AddWindow = function() {
 		height: '70dp',
 		top: '80dp',
 		font : {fontSize:18},
-		hintText: 'Item Description',
+		hintText: addItemDescText,
 		borderWidth:1,
 		borderColor:'#bbb',
 		borderRadius:5,
@@ -48,7 +51,7 @@ exports.AddWindow = function() {
 	// });
 	
 	var reminderButton = Ti.UI.createButton({
-		title: 'reminder',
+		title: addItemReminderButton,
 		width: '120dp',
 		height: '40dp',
 		top: '170dp',
@@ -65,7 +68,7 @@ exports.AddWindow = function() {
 	});
 	
 	var expirationButton = Ti.UI.createButton({
-		title: 'Expiration Date',
+		title: addItemExpirationButton,
 		width: '120dp',
 		height: '40dp',
 		top: '170dp',
@@ -82,7 +85,7 @@ exports.AddWindow = function() {
 	});
 	
 	var addButton = Ti.UI.createButton({
-		title: 'Add',
+		title: addItemAddButton,
 		width: '120dp',
 		height: '40dp',
 		top: '220dp',
@@ -95,7 +98,7 @@ exports.AddWindow = function() {
 	});
 	
 	var cancelButton = Ti.UI.createButton({
-		title: 'Cancel',
+		title: addItemCancelButton,
 		width: '120dp',
 		height: '40dp',
 		top: '220dp',
@@ -116,8 +119,12 @@ exports.AddWindow = function() {
 };
 
 var addItem = function(item, win) {	
+	var addItemEmptyNameAlert 	= L('addItemEmptyNameAlert');
+	var addItemReminderAlert 	= L('addItemReminderAlert');
+	var addItemExpirationAlert 	= L('addItemExpirationAlert');
+	
 	if (item.name === '') {
-		alert('Please enter a name first');
+		alert(addItemEmptyNameAlert);
 		return false;	
 	}
 	
@@ -131,14 +138,16 @@ var addItem = function(item, win) {
 	if (item.reminder !== undefined) {
 		dif = item.reminder.getTime() - currentTime.getTime(); 
 	
-		var seconds = dif / 1000;
-	
-		//TODO: create item.reminderID that holds the position in the array of the running reminder timer?
-		var timer = countDown(0, seconds, function() {
-			alert(item.name + " has a reminder for you!");
-		});
+		if (dif < 0){
+			var seconds = dif / 1000;
 		
-		timer.start();
+			//TODO: create item.reminderID that holds the position in the array of the running reminder timer?
+			var timer = countDown(0, seconds, function() {
+				alert(item.name + addItemReminderAlert);
+			});
+			
+			timer.start();
+		}
 	}
 	
 	//Blah Blah code copying
@@ -146,14 +155,16 @@ var addItem = function(item, win) {
 	if (item.expDate !== undefined) {
 		dif = item.expDate.getTime() - currentTime.getTime(); 
 	
-		seconds = dif / 1000;
-	
-		//TODO: create item.expirationID that holds the position in the array of the running expiration timer
-		var expTimer = countDown(0, seconds, function() {
-			alert(item.name + " has expired!");
-		});
+		if (dif < 0){
+			seconds = dif / 1000;
 		
-		expTimer.start();
+			//TODO: create item.expirationID that holds the position in the array of the running expiration timer
+			var expTimer = countDown(0, seconds, function() {
+				alert(item.name + addItemExpirationAlert);
+			});
+			
+			expTimer.start();
+		}
 	}
 	
 	win.close();
