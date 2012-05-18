@@ -10,6 +10,12 @@
  *  
  */
 
+var appTitaniumVerCheckAlert = L('appTitaniumVerCheckAlert');
+var appTitaniumMobWebCheckAlert = L('appTitaniumMobWebCheckAlert');
+var appListWindowTitle = L('appListWindowTitle');
+var appListTabTitle = L('appListTabTitle');
+var appTestTabTitle = L('appTestTabTitle');
+
 //bootstrap and check dependencies
 if (Ti.version < 1.8 ) {
 	var appTitaniumVerCheckAlert = L('appTitaniumVerCheckAlert');
