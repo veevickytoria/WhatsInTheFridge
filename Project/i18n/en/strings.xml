@@ -2,7 +2,21 @@
 <resources>
 	<string name="appAddItem">Add Item</string>
 	<string name="appChangeSort">Sort Style</string>
-	<string name="sortSefaultSortOption">No Sort</string>
+	<string name="appTitaniumVerCheckAlert">Sorry - this application template requires Titanium Mobile SDK 1.8 or later</string>
+	<string name="appTitaniumMobWebCheckAlert">Mobile web is not yet supported by this template</string>
+	<string name="appListWindowTitle">Items</string>
+	<string name="appListTabTitle">What's in the Fridge?</string>
+	<string name="appTestTabTitle">Unit Test</string>
+	<string name="listIphoneAddButton">+</string>
+	<string name="listIphoneSortButton">Sort</string>
+	<string name="listOptionWindowEditButton">Edit</string>
+	<string name="listOptionWindowDeleteButton">Delete</string>
+	<string name="listOptionWindowCancelButton">Cancel</string>
+	<string name="listOptionWindowTitle">Edit</string>
+	<string name="listOptionWindowDeleteConf">Delete %1 ?</string>
+	<string name="listOptionWindowDeleteYesButton">Yes</string>
+	<string name="listOptionWindowDeleteYesButton">No</string>
+	<string name="sortDefaultSortOption">No Sort</string>
 	<string name="sortNameASortOption">Name Asc</string>
 	<string name="sortNameDSortOption">Name Desc</string>
 	<string name="sortUpdateButton">Update</string>

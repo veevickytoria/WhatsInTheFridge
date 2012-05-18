@@ -2,6 +2,20 @@
 <resources>
 	<string name="appAddItem">Element hinzufügen</string>
 	<string name="appChangeSort">Sortieren Stil</string>
+	<string name="appTitaniumVerCheckAlert">Sorry - Diese Anwendung erfordert Vorlage Titanium Mobile SDK 1.8 oder höher</string>
+	<string name="appTitaniumMobWebCheckAlert">Mobile Web wird noch nicht von dieser Vorlage unterstützt</string>
+	<string name="appListWindowTitle">Artikel</string>
+	<string name="appListTabTitle">Was ist im Kühlschrank?</string>
+	<string name="appTestTabTitle">Unit-Test</string>
+	<string name="listIphoneAddButton">+</string>
+	<string name="listIphoneSortButton">Art</string>
+	<string name="listOptionWindowEditButton">Bearbeiten</string>
+	<string name="listOptionWindowDeleteButton">Löschen</string>
+	<string name="listOptionWindowCancelButton">Stornieren</string>
+	<string name="listOptionWindowTitle">Bearbeiten</string>
+	<string name="listOptionWindowDeleteConf">Löschen Sie %1?</string>
+	<string name="listOptionWindowDeleteYesButton">Ja</string>
+	<string name="listOptionWindowDeleteYesButton">Nein</string>
 	<string name="sortDefaultSortOption">Kein Sortieren</string>
 	<string name="sortNameASortOption">Name aufsteigend</string>
 	<string name="sortNameDSortOption">Name absteigend</string>

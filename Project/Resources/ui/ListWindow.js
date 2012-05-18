@@ -10,6 +10,10 @@ exports.ListWindow = function(args) {
 	
 	var AddWindow = require('ui/AddWindow').AddWindow;
 	var SortWindow = require('ui/SortWindow').SortWindow;
+	
+	var listIphoneAddButton = L('listIphoneAddButton');
+	var listIphoneSortButton = L('listIphoneSortButton');
+	
 	var self = Ti.UI.createWindow(args);
 	var tableview = Ti.UI.createTableView();
 	
@@ -81,9 +85,18 @@ var getTableData = function() {
 var createConfirmDialog = function(id, title) {
 	var db = require('db');
 	var EditWindow = require('ui/EditWindow').EditWindow;
-	var buttons = ['Edit', 'Delete', 'Cancel'];
+	
+	var listOptionWindowEditButton = L('listOptionWindowEditButton');
+	var listOptionWindowDeleteButton = L('listOptionWindowDeleteButton');
+	var listOptionWindowCancelButton = L('listOptionWindowCancelButton');
+	var listOptionWindowTitle = L('listOptionWindowTitle');
+	var listOptionWindowDeleteConf = L('listOptionWindowDeleteConf');
+	var listOptionWindowDeleteYesButton = L('listOptionWindowDeleteYesButton');
+	var listOptionWindowDeleteNoButton = L('listOptionWindowDeleteNoButton');
+	
+	var buttons = [listOptionWindowEditButton, listOptionWindowDeleteButton, listOptionWindowCancelButton];
 	var confirm = Ti.UI.createAlertDialog({
-		title: 'Edit',
+		title: listOptionWindowTitle,
 		message: title,
 		buttonNames: buttons
 	});
@@ -93,9 +106,9 @@ var createConfirmDialog = function(id, title) {
 			new EditWindow(id).open();
 		} else if (e.index === 1) {
 			var delConfirm =  Titanium.UI.createAlertDialog({
-        		message:'Delete ' + title +' ?'
+        		message: String.format(L('listOptionWindowDeleteConf'), title)
    			 });
-    		delConfirm.buttonNames = ['Yes', 'No'];
+    		delConfirm.buttonNames = [listOptionWindowDeleteYesButton, listOptionWindowDeleteNoButton];
     		delConfirm.addEventListener('click', function(e) {
     			if(e.index === 0){
     				db.deleteItem(id);

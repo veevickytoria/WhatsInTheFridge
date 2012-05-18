@@ -10,12 +10,18 @@
  *  
  */
 
+var appTitaniumVerCheckAlert = L('appTitaniumVerCheckAlert');
+var appTitaniumMobWebCheckAlert = L('appTitaniumMobWebCheckAlert');
+var appListWindowTitle = L('appListWindowTitle');
+var appListTabTitle = l('appListTabTitle');
+var appTestTabTitle = l('appTestTabTitle');
+
 //bootstrap and check dependencies
 if (Ti.version < 1.8 ) {
-	alert('Sorry - this application template requires Titanium Mobile SDK 1.8 or later');
+	alert(appTitaniumVerCheckAlert);
 }
 else if (Ti.Platform.osname === 'mobileweb') {
-	alert('Mobile web is not yet supported by this template');
+	alert(appTitaniumMobWebCheckAlert);
 }
 else {
 	var globals = {};
@@ -32,10 +38,10 @@ else {
 		//create our global tab group	
 		globals.tabs = new AppTabGroup(
 			{
-				title: "What's in the Fridge?",
+				title: appListTabTitle,
 				icon: 'images/KS_nav_ui.png',
 				window: new ListWindow({
-					title: 'Items',
+					title: appListWindowTitle,
 					backgroundColor: '#fff',
 					navBarHidden: false,
 					activity: {
@@ -46,7 +52,7 @@ else {
 							var changeSortString = L('appChangeSort');
 							
 						    var menuAddItem = menu.add({ title: addMenuString });
-						    //menuAddItem.setIcon("images/ic_menu_add.png");
+						    menuAddItem.setIcon("images/ic_menu_add.png");
 						    menuAddItem.addEventListener("click", function(e) {
 						        new AddWindow().open();
 						    });
@@ -59,11 +65,11 @@ else {
 				})
 			},
 			{
-				title: 'Unit Test',
+				title: appTestTabTitle,
 				icon: 'images/KS_nav_views.png',
 				window: Titanium.UI.createWindow({
 	    			url: 'runner.js', 
-	    			title:'Unit Test'
+	    			title: appTestTabTitle
 				})
 			}
 		);
