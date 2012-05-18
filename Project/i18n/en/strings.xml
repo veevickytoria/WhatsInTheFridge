@@ -21,6 +21,7 @@
 	<string name="sortNameDSortOption">Name Desc</string>
 	<string name="sortUpdateButton">Update</string>
 	<string name="sortCancelButton">Cancel</string>
+	<string name="sortTitle">Change Sort</string>
 	<string name="addItemNameText">Item Name</string>
 	<string name="addItemDescText">Item Description</string>
 	<string name="addItemReminderButton">Reminder</string>
@@ -30,4 +31,5 @@
 	<string name="addItemEmptyNameAlert">Please enter a name first</string>
 	<string name="addItemReminderAlert"> has a reminder for you</string>
 	<string name="addItemExpirationAlert"> has expired</string>
+	<string name="addItemTitle">Add Item</string>
 </resources>

@@ -10,17 +10,13 @@
  *  
  */
 
-var appTitaniumVerCheckAlert = L('appTitaniumVerCheckAlert');
-var appTitaniumMobWebCheckAlert = L('appTitaniumMobWebCheckAlert');
-var appListWindowTitle = L('appListWindowTitle');
-var appListTabTitle = l('appListTabTitle');
-var appTestTabTitle = l('appTestTabTitle');
-
 //bootstrap and check dependencies
 if (Ti.version < 1.8 ) {
+	var appTitaniumVerCheckAlert = L('appTitaniumVerCheckAlert');
 	alert(appTitaniumVerCheckAlert);
 }
 else if (Ti.Platform.osname === 'mobileweb') {
+	var appTitaniumMobWebCheckAlert = L('appTitaniumMobWebCheckAlert');
 	alert(appTitaniumMobWebCheckAlert);
 }
 else {
@@ -29,8 +25,12 @@ else {
 	(function() {
 		var AppTabGroup = require('ui/AppTabGroup').AppTabGroup,
 			ListWindow = require('ui/ListWindow').ListWindow,
-			AddWindow = require('ui/AddWindow').AddWindow;
+			AddWindow = require('ui/AddWindow').AddWindow,
 			SortWindow = require('ui/SortWindow').SortWindow;
+			
+		var appListWindowTitle = L('appListWindowTitle');
+		var appListTabTitle = L('appListTabTitle');
+		var appTestTabTitle = L('appTestTabTitle');
 		
 		// Initialize local storage
 		require('db').createDb();

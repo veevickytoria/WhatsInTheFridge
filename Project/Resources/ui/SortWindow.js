@@ -6,10 +6,11 @@ exports.SortWindow = function() {
 	var nameDSort  = L('sortNameDSortOption');
 	var sortUpdateButton = L('sortUpdateButton');
 	var sortCancelButton = L('sortCancelButton');
+	var sortTitle = L('sortTitle');
 	
 	var self = Ti.UI.createWindow({
 		modal: true,
-		title: 'Add Reminder',
+		title: sortTitle,
 		backgroundColor: '#fff'
 	});
 	

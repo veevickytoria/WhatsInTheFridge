@@ -5,6 +5,7 @@ exports.AddWindow = function() {
 	var addItemExpirationButton = L('addItemExpirationButton');
 	var addItemAddButton 		= L('addItemAddButton');
 	var addItemCancelButton 	= L('addItemCancelButton');
+	var addItemTitle			= L('addItemTitle');
 	
 	var AddReminderWindow = require('ui/AddReminderWindow').AddReminderWindow;
 	var AddExpirationWindow = require('ui/AddExpirationWindow').AddExpirationWindow;
@@ -14,14 +15,9 @@ exports.AddWindow = function() {
 	
 	var self = Ti.UI.createWindow({
 		modal: true,
-		title: 'Add Item',
+		title: addItemTitle,
 		backgroundColor: '#fff'
 	});
-	
-	// Ti.App.addEventListener('reminderChoice', function(e) {
-		// Ti.API.info("=====================================>" + e.reminderEvent);
-		// reminder = e.reminderEvent;
-	// });
 	
 	var itemNameField = Ti.UI.createTextField({
 		width: '300dp',
