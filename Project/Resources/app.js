@@ -41,12 +41,16 @@ else {
 					activity: {
 						onCreateOptionsMenu: function(e) {
 							var menu = e.menu;
-						    var menuAddItem = menu.add({ title: "Add Item" });
-						    menuAddItem.setIcon("images/ic_menu_add.png");
+							
+							var addMenuString = L('addItem');
+							var changeSortString = L('changeSort');
+							
+						    var menuAddItem = menu.add({ title: addMenuString });
+						    //menuAddItem.setIcon("images/ic_menu_add.png");
 						    menuAddItem.addEventListener("click", function(e) {
 						        new AddWindow().open();
 						    });
-						    var menuChangeSort = menu.add({ title: "Sort Style" });
+						    var menuChangeSort = menu.add({ title: changeSortString });
 						    menuChangeSort.addEventListener("click", function(e) {
 						        new SortWindow().open();
 						    });
