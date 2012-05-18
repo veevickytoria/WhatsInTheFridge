@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="addItem">Add Item</string>
-	<string name="changeSort">Sort Style</string>
-	<string name="defaultSortOption">No Sort</string>
-	<string name="nameASortOption">Name Asc</string>
-	<string name="nameDSortOption">Name Desc</string>
+	<string name="appAddItem">Add Item</string>
+	<string name="appChangeSort">Sort Style</string>
+	<string name="sortSefaultSortOption">No Sort</string>
+	<string name="sortNameASortOption">Name Asc</string>
+	<string name="sortNameDSortOption">Name Desc</string>
 	<string name="sortUpdateButton">Update</string>
 	<string name="sortCancelButton">Cancel</string>
-	
-	<string name="home">Home</string>	
-	<string name="settings">Settings</string>
-	<string name="openWindow">Open New Window</string>
-	<string name="newWindow">New Window</string>
+	<string name="addItemNameText">Item Name</string>
+	<string name="addItemDescText">Item Description</string>
+	<string name="addItemReminderButton">Reminder</string>
+	<string name="addItemExpirationButton">Expiration Date</string>
+	<string name="addItemAddButton">Add</string>
+	<string name="addItemCancelButton">Cancel</string>
+	<string name="addItemEmptyNameAlert">Please enter a name first</string>
+	<string name="addItemReminderAlert"> has a reminder for you</string>
+	<string name="addItemExpirationAlert"> has expired</string>
 </resources>

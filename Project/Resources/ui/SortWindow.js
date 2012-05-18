@@ -1,9 +1,9 @@
 var sortNumber = 0;
 
 exports.SortWindow = function() {
-	var defautSort = L('defaultSortOption');
-	var nameASort  = L('nameASortOption');
-	var nameDSort  = L('nameDSortOption');
+	var defautSort = L('sortDefaultSortOption');
+	var nameASort  = L('sortNameASortOption');
+	var nameDSort  = L('sortNameDSortOption');
 	var sortUpdateButton = L('sortUpdateButton');
 	var sortCancelButton = L('sortCancelButton');
 	
@@ -27,6 +27,8 @@ exports.SortWindow = function() {
 	data.push(Ti.UI.createPickerRow({title: nameDSort, number: 2}));
 	
 	sortTypeField.add(data);
+	
+	sortTypeField.selectionIndicator = true;
 	
 	var addButton = Ti.UI.createButton({
 		title: sortUpdateButton,

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
-	<string name="addItem">Element hinzufügen</string>
-	<string name="changeSort">Sortieren Stil</string>
-	<string name="defaultSortOption">Kein Sortieren</string>
-	<string name="nameASortOption">Name aufsteigend</string>
-	<string name="nameDSortOption">Name absteigend</string>
-	<string name="sortUpdateButton">aktualisieren</string>
-	<string name="sortCancelButton">stornieren</string>
-	
-	<string name="home">Home</string>	
-	<string name="settings">Settings</string>
-	<string name="openWindow">Open New Window</string>
-	<string name="newWindow">New Window</string>
+	<string name="appAddItem">Element hinzufügen</string>
+	<string name="appChangeSort">Sortieren Stil</string>
+	<string name="sortDefaultSortOption">Kein Sortieren</string>
+	<string name="sortNameASortOption">Name aufsteigend</string>
+	<string name="sortNameDSortOption">Name absteigend</string>
+	<string name="sortUpdateButton">Aktualisieren</string>
+	<string name="sortCancelButton">Stornieren</string>
+	<string name="addItemNameText">Artikelname</string>
+	<string name="addItemDescText">Artikel Beschreibung</string>
+	<string name="addItemReminderButton">Erinnerung</string>
+	<string name="addItemExpirationButton">Ablaufdatum</string>
+	<string name="addItemAddButton">Hinzufügen</string>
+	<string name="addItemCancelButton">Stornieren</string>
+	<string name="addItemEmptyNameAlert">Bitte geben Sie einen Namen zuerst</string>
+	<string name="addItemReminderAlert"> hat eine Erinnerung für Sie</string>
+	<string name="addItemExpirationAlert"> ist abgelaufen</string>
 </resources>

@@ -26,7 +26,7 @@ exports.AddReminderWindow = function(win) {
 	var reminderTimeField = Ti.UI.createPicker({
 		top: '150dp',
 		hintText: 'Reminder Time',
-		// minDate: new Date(),
+		minDate: new Date(),
 		type: Titanium.UI.PICKER_TYPE_TIME
 	});
 	

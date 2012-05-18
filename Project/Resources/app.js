@@ -42,8 +42,8 @@ else {
 						onCreateOptionsMenu: function(e) {
 							var menu = e.menu;
 							
-							var addMenuString = L('addItem');
-							var changeSortString = L('changeSort');
+							var addMenuString = L('appAddItem');
+							var changeSortString = L('appChangeSort');
 							
 						    var menuAddItem = menu.add({ title: addMenuString });
 						    //menuAddItem.setIcon("images/ic_menu_add.png");
