@@ -32,4 +32,11 @@
 	<string name="addItemReminderAlert"> hat eine Erinnerung für Sie</string>
 	<string name="addItemExpirationAlert"> ist abgelaufen</string>
 	<string name="addItemTitle">Element Hinzufügen</string>
+	<string name="editItemReminderButton">Erinnerung</string>
+	<string name="editItemExpirationButton">Ablaufdatum</string>
+	<string name="editItemUpdateButton">Aktualisieren</string>
+	<string name="editItemCancelButton">Stornieren</string>
+	<string name="editItemEmptyNameAlert">Bitte geben Sie einen Namen zuerst</string>
+	<string name="editItemUpdateAlert"> ist erfolgreich aktualisiert</string>
+	<string name="editItemTitle">Element Bearbeiten</string>
 </resources>

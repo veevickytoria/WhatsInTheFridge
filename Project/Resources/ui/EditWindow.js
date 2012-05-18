@@ -1,5 +1,14 @@
+var editItemEmptyNameAlert = L('editItemEmptyNameAlert');
+var editItemUpdateAlert = L('editItemUpdateAlert');
+
 exports.EditWindow = function(id) {
 	var item = selecItem(id);
+	
+	var editItemReminderButton 	= L('editItemReminderButton');
+	var editItemExpirationButton = L('editItemExpirationButton');
+	var editItemUpdateButton 	= L('editItemUpdateButton');
+	var editItemCancelButton 	= L('editItemCancelButton');
+	var editItemTitle			= L('editItemTitle');
 	
 	var EditReminderWindow = require('ui/EditReminderWindow').EditReminderWindow;
 	var EditExpirationWindow = require('ui/EditExpirationWindow').EditExpirationWindow;
@@ -9,7 +18,7 @@ exports.EditWindow = function(id) {
 	
 	var self = Ti.UI.createWindow({
 		modal: true,
-		title: 'Edit Item',
+		title: editItemTitle,
 		backgroundColor: '#fff'
 	});
 	
@@ -43,17 +52,12 @@ exports.EditWindow = function(id) {
 		returnKeyType: Ti.UI.RETURNKEY_DONE
 	});
 	
-	// itemDescField.addEventListener('return', function(e) {
-		// var item = {name: itemNameField.value, description: itemDescField.value};
-		// addItem(item, self);
-	// });
-	
 	itemDescField.addEventListener('click', function(e) {
 		itemDescField.value = "";
 	});
 	
 	var reminderButton = Ti.UI.createButton({
-		title: 'Reminder',
+		title: editItemReminderButton,
 		width: '120dp',
 		height: '40dp',
 		top: '170dp',
@@ -61,13 +65,11 @@ exports.EditWindow = function(id) {
 	});
 	
 	self.addEventListener('reminderChoice', function(e) {
-		Ti.API.info("=====================================>" + e.reminderEvent);
 		reminder = e.reminderEvent;
 	});
 	
 	reminderButton.addEventListener('click', function() {
 		if (item.reminder == null){
-			Ti.API.info("------------------------------> item.reminder at window call " + item.reminder);
 			new EditReminderWindow(self, new Date()).open();
 		} else {
 			new EditReminderWindow(self, new Date(Date.parse(item.reminder))).open();
@@ -75,7 +77,7 @@ exports.EditWindow = function(id) {
 	});
 	
 	var expirationButton = Ti.UI.createButton({
-		title: 'Expiration Date',
+		title: editItemExpirationButton,
 		width: '120dp',
 		height: '40dp',
 		top: '170dp',
@@ -88,7 +90,6 @@ exports.EditWindow = function(id) {
 	
 	expirationButton.addEventListener('click', function() {
 		if (item.expDate == null){
-			Ti.API.info("------------------------------> item.expdate at window call " + item.reminder);
 			new EditExpirationWindow(self, new Date()).open();
 		} else {
 			new EditExpirationWindow(self, new Date(Date.parse(item.expDate))).open();
@@ -96,7 +97,7 @@ exports.EditWindow = function(id) {
 	});
 	
 	var updateButton = Ti.UI.createButton({
-		title: 'Update',
+		title: editItemUpdateButton,
 		width: '120dp',
 		height: '40dp',
 		top: '220dp',
@@ -109,7 +110,7 @@ exports.EditWindow = function(id) {
 	});
 	
 	var cancelButton = Ti.UI.createButton({
-		title: 'Cancel',
+		title: editItemCancelButton,
 		width: '120dp',
 		height: '40dp',
 		top: '220dp',
@@ -135,7 +136,7 @@ var selecItem = function(id) {
 
 var updateItem = function(id, item, win) {	
 	if (item.name === '') {
-		alert('Please enter a name first');
+		alert(editItemEmptyNameAlert);
 		return false;	
 	}
 	
@@ -143,5 +144,5 @@ var updateItem = function(id, item, win) {
 	Ti.App.fireEvent('app:updateTables');
 	win.close();
 	if (result !== false)
-		alert(result.name + " is updated successfully!");
+		alert(result.name + editItemUpdateAlert);
 };

@@ -32,4 +32,11 @@
 	<string name="addItemReminderAlert"> has a reminder for you</string>
 	<string name="addItemExpirationAlert"> has expired</string>
 	<string name="addItemTitle">Add Item</string>
+	<string name="editItemReminderButton">Reminder</string>
+	<string name="editItemExpirationButton">Expiration Date</string>
+	<string name="editItemUpdateButton">Update</string>
+	<string name="editItemCancelButton">Cancel</string>
+	<string name="editItemEmptyNameAlert">Please enter a name first</string>
+	<string name="editItemUpdateAlert"> is updated successfully!</string>
+	<string name="editItemTitle">Edit Item</string>
 </resources>
