@@ -15,7 +15,7 @@
 	<string name="listOptionWindowTitle">Bearbeiten</string>
 	<string name="listOptionWindowDeleteConf">Löschen Sie %1?</string>
 	<string name="listOptionWindowDeleteYesButton">Ja</string>
-	<string name="listOptionWindowDeleteYesButton">Nein</string>
+	<string name="listOptionWindowDeleteNoButton">Nein</string>
 	<string name="sortDefaultSortOption">Kein Sortieren</string>
 	<string name="sortNameASortOption">Name aufsteigend</string>
 	<string name="sortNameDSortOption">Name absteigend</string>
