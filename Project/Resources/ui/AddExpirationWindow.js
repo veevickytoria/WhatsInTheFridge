@@ -32,7 +32,7 @@ exports.AddExpirationWindow = function(win) {
 	addButton.addEventListener('click', function() {
 		var expiration = expirationDateField.value;
 		
-		//defult it to 8am on the date
+		//default it to 8am on the date
 		expiration.setHours(8,0,0);
 		win.fireEvent('expirationChoice', {expirationEvent : expiration});
 		
