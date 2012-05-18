@@ -1,3 +1,6 @@
+Ti.App.itemTimers = [];
+var timerCounter = 0;
+
 exports.AddWindow = function() {
 	var addItemNameText 		= L('addItemNameText');
 	var addItemDescText 		= L('addItemDescText');
@@ -45,11 +48,6 @@ exports.AddWindow = function() {
 		returnKeyType: Ti.UI.RETURNKEY_DONE
 	});
 	
-	// itemDescField.addEventListener('return', function(e) {
-		// var item = {name: itemNameField.value, description: itemDescField.value};
-		// addItem(item, self);
-	// });
-	
 	var reminderButton = Ti.UI.createButton({
 		title: addItemReminderButton,
 		width: '120dp',
@@ -59,7 +57,6 @@ exports.AddWindow = function() {
 	});
 	
 	self.addEventListener('reminderChoice', function(e) {
-		Ti.API.info("=====================================>" + e.reminderEvent);
 		reminder = e.reminderEvent;
 	});
 	
@@ -76,7 +73,6 @@ exports.AddWindow = function() {
 	});
 	
 	self.addEventListener('expirationChoice', function(e) {
-		Ti.API.info("=====================================>" + e.expirationEvent);
 		expiration = e.expirationEvent;
 	});
 	
@@ -133,20 +129,21 @@ var addItem = function(item, win) {
 	
 	var currentTime= new Date();
 	var dif;
+	var remTimer;
+	var expTimer;
 
 	//reminder timer start	
 	if (item.reminder !== undefined) {
 		dif = item.reminder.getTime() - currentTime.getTime(); 
 	
-		if (dif < 0){
+		if (dif > 0){
 			var seconds = dif / 1000;
 		
-			//TODO: create item.reminderID that holds the position in the array of the running reminder timer?
-			var timer = countDown(0, seconds, function() {
+			remTimer = countDown(0, seconds, function() {
 				alert(item.name + addItemReminderAlert);
 			});
 			
-			timer.start();
+			remTimer.start();
 		}
 	}
 	
@@ -155,17 +152,19 @@ var addItem = function(item, win) {
 	if (item.expDate !== undefined) {
 		dif = item.expDate.getTime() - currentTime.getTime(); 
 	
-		if (dif < 0){
+		if (dif > 0){
 			seconds = dif / 1000;
 		
-			//TODO: create item.expirationID that holds the position in the array of the running expiration timer
-			var expTimer = countDown(0, seconds, function() {
+			expTimer = countDown(0, seconds, function() {
 				alert(item.name + addItemExpirationAlert);
 			});
 			
 			expTimer.start();
 		}
 	}
+	
+	var timerTup = {reminder: remTimer, expiration: expTimer, id: parseInt(result[0].id)};
+	Ti.App.itemTimers.push(timerTup);
 	
 	win.close();
 	return result;

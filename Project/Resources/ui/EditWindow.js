@@ -1,5 +1,7 @@
 var editItemEmptyNameAlert = L('editItemEmptyNameAlert');
 var editItemUpdateAlert = L('editItemUpdateAlert');
+var editItemReminderAlert 	= L('addItemReminderAlert');
+var editItemExpirationAlert 	= L('addItemExpirationAlert');
 
 exports.EditWindow = function(id) {
 	var item = selecItem(id);
@@ -134,7 +136,7 @@ var selecItem = function(id) {
 	return require('db').selectItem(id);
 };
 
-var updateItem = function(id, item, win) {	
+var updateItem = function(id, item, win, timers) {	
 	if (item.name === '') {
 		alert(editItemEmptyNameAlert);
 		return false;	
@@ -142,7 +144,100 @@ var updateItem = function(id, item, win) {
 	
 	var result = require('db').updateItem(id, item);
 	Ti.App.fireEvent('app:updateTables');
+	
+	var countID = -1;
+	
+	while (countID < Ti.App.itemTimers.length) {
+		countID++;
+		Ti.API.info("====================================== count " + countID + "      value " + Ti.App.itemTimers[countID]);
+		
+		if (Ti.App.itemTimers[countID] !== undefined && Ti.App.itemTimers[countID].id == id) {
+			if (Ti.App.itemTimers[countID].reminder !== undefined) {
+				Ti.App.itemTimers[countID].reminder.stop();
+			}
+			
+			if (Ti.App.itemTimers[countID].expiration !== undefined) {
+				Ti.App.itemTimers[countID].expiration.stop();
+			}
+			
+			break;
+		}
+	}
+	
+	var currentTime= new Date();
+	var dif;
+	var remTimer;
+	var expTimer;
+
+	//reminder timer start	
+	if (item.reminder !== undefined) {
+		dif = item.reminder.getTime() - currentTime.getTime(); 
+	
+		if (dif > 0){
+			var seconds = dif / 1000;
+		
+			remTimer = countDown(0, seconds, function() {
+				alert(item.name + editItemReminderAlert);
+			});
+			
+			remTimer.start();
+		}
+	}
+	
+	//Blah Blah code copying
+	//expiration date timer
+	if (item.expDate !== undefined) {
+		dif = item.expDate.getTime() - currentTime.getTime(); 
+	
+		if (dif > 0){
+			seconds = dif / 1000;
+		
+			expTimer = countDown(0, seconds, function() {
+				alert(item.name + editItemExpirationAlert);
+			});
+			
+			expTimer.start();
+		}
+	}
+	
+	Ti.App.itemTimers[countID].reminder = remTimer;
+	Ti.App.itemTimers[countID].reminder = expTimer;
+	
 	win.close();
 	if (result !== false)
 		alert(result.name + editItemUpdateAlert);
 };
+
+//from http://cssgallery.info/create-a-countdown-timer-with-titanium-appcelerator/
+var countDown =  function( m , s, fn_end ) {
+	return {
+		total_sec:m*60+s,
+		timer:this.timer,
+		set: function(m,s) {
+			this.total_sec = parseInt(m)*60+parseInt(s);
+			this.time = {m:m,s:s};
+			return this;
+		},
+		start: function() {
+			var self = this;
+			this.timer = setInterval( function() {
+				if (self.total_sec > 0) {
+					self.total_sec--;
+					self.time = { m : parseInt(self.total_sec/60), s: (self.total_sec%60) };
+					// fn_tick();
+				}
+				else {
+					self.stop();
+					fn_end();
+				}
+				}, 1000 );
+			return this;
+		},
+		stop: function() {
+			clearInterval(this.timer)
+			this.time = {m:0,s:0};
+			this.total_sec = 0;
+			return this;
+		}
+	}
+}

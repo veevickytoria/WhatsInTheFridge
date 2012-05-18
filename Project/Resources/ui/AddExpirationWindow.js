@@ -10,7 +10,6 @@ exports.AddExpirationWindow = function(win) {
 	
 	var expirationDateField = Ti.UI.createPicker({
 		top: '10dp',
-		hintText: 'Reminder Date',
 		minDate: new Date(),
 		type: Titanium.UI.PICKER_TYPE_DATE,
 	});
