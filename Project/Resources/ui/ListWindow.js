@@ -105,7 +105,7 @@ var createConfirmDialog = function(id, title) {
 			new EditWindow(id).open();
 		} else if (e.index === 1) {
 			var delConfirm =  Titanium.UI.createAlertDialog({
-        		message: String.format(listOptionWindowDeleteConf, title)
+        		message: listOptionWindowDeleteConf
    			 });
     		delConfirm.buttonNames = [listOptionWindowDeleteYesButton, listOptionWindowDeleteNoButton];
     		delConfirm.addEventListener('click', function(e) {

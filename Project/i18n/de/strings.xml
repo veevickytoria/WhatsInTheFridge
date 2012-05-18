@@ -13,7 +13,7 @@
 	<string name="listOptionWindowDeleteButton">Löschen</string>
 	<string name="listOptionWindowCancelButton">Stornieren</string>
 	<string name="listOptionWindowTitle">Bearbeiten</string>
-	<string name="listOptionWindowDeleteConf">Löschen Sie %1?</string>
+	<string name="listOptionWindowDeleteConf">Sind Sie sicher?</string>
 	<string name="listOptionWindowDeleteYesButton">Ja</string>
 	<string name="listOptionWindowDeleteNoButton">Nein</string>
 	<string name="sortDefaultSortOption">Kein Sortieren</string>
@@ -39,4 +39,16 @@
 	<string name="editItemEmptyNameAlert">Bitte geben Sie einen Namen zuerst</string>
 	<string name="editItemUpdateAlert"> ist erfolgreich aktualisiert</string>
 	<string name="editItemTitle">Element Bearbeiten</string>
+	<string name="addReminderTitle">Erinnerung Hinzufügen</string>
+	<string name="addReminderAddButton">Hinzufügen</string>
+	<string name="addReminderCancelButton">Stornieren</string>
+	<string name="addExpirationTitle">Fügen Ablaufdatum</string>
+	<string name="addExpirationAddButton">Hinzufügen</string>
+	<string name="addExpirationCancelButton">Stornieren</string>
+	<string name="editReminderTitle">bearbeiten Erinnerung</string>
+	<string name="editReminderUpdateButton">Aktualisieren</string>
+	<string name="editReminderCancelButton">Stornieren</string>
+	<string name="editExpirationTitle">Bearbeiten Ablaufdatum</string>
+	<string name="editExpirationUpdateButton">Aktualisieren</string>
+	<string name="editExpirationCancelButton">Stornieren</string>
 </resources>

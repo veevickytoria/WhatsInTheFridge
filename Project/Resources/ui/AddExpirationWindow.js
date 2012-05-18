@@ -1,7 +1,10 @@
 exports.AddExpirationWindow = function(win) {
+	var addExpirationTitle = L('addExpirationTitle');
+	var addExpirationAddButton = L('addExpirationAddButton');
+	var addExpirationCancelButton = L('addExpirationCancelButton');	
 	
 	var self = Ti.UI.createWindow({
-		title: 'Add Expiration Date',
+		title: addExpirationTitle,
 		backgroundColor: '#fff'
 	});
 	
@@ -19,7 +22,7 @@ exports.AddExpirationWindow = function(win) {
 	expirationDateField.fireEvent('change', {value : new Date()});
 	
 	var addButton = Ti.UI.createButton({
-		title: 'Add',
+		title: addExpirationAddButton,
 		width: '120dp',
 		height: '40dp',
 		top: '400dp',
@@ -37,7 +40,7 @@ exports.AddExpirationWindow = function(win) {
 	});
 	
 	var cancelButton = Ti.UI.createButton({
-		title: 'Cancel',
+		title: addExpirationCancelButton,
 		width: '120dp',
 		height: '40dp',
 		top: '400dp',

@@ -13,7 +13,7 @@
 	<string name="listOptionWindowDeleteButton">Delete</string>
 	<string name="listOptionWindowCancelButton">Cancel</string>
 	<string name="listOptionWindowTitle">Edit</string>
-	<string name="listOptionWindowDeleteConf">Delete %1 ?</string>
+	<string name="listOptionWindowDeleteConf">Are you sure?</string>
 	<string name="listOptionWindowDeleteYesButton">Yes</string>
 	<string name="listOptionWindowDeleteNoButton">No</string>
 	<string name="sortDefaultSortOption">No Sort</string>
@@ -38,5 +38,17 @@
 	<string name="editItemCancelButton">Cancel</string>
 	<string name="editItemEmptyNameAlert">Please enter a name first</string>
 	<string name="editItemUpdateAlert"> is updated successfully!</string>
-	<string name="editItemTitle">Edit Item</string>
+	<string name="editItemTitle">Edit Item</string>	
+	<string name="addReminderTitle">Add Reminder</string>
+	<string name="addReminderAddButton">Add</string>
+	<string name="addReminderCancelButton">Cancel</string>
+	<string name="addExpirationTitle">Add Expiration Date</string>
+	<string name="addExpirationAddButton">Add</string>
+	<string name="addExpirationCancelButton">Cancel</string>	
+	<string name="editReminderTitle">Edit Reminder</string>
+	<string name="editReminderUpdateButton">Update</string>
+	<string name="editReminderCancelButton">Cancel</string>
+	<string name="editExpirationTitle">Edit Expiration Date</string>
+	<string name="editExpirationUpdateButton">Update</string>
+	<string name="editExpirationCancelButton">Cancel</string>
 </resources>

@@ -1,14 +1,15 @@
 exports.EditExpirationWindow = function(win, expiration) {
+	var editExpirationTitle = L('editExpirationTitle');
+	var editExpirationUpdateButton = L('editExpirationUpdateButton');
+	var editExpirationCancelButton = L('editExpirationCancelButton');
 	
 	var self = Ti.UI.createWindow({
-		// modal: true,
-		title: 'Edit Expiration Date',
+		title: '',
 		backgroundColor: '#fff'
 	});
 	
 	var expirationDateField = Ti.UI.createPicker({
 		top: '10dp',
-		hintText: 'Expiration Date',
 		value: expiration,
 		minDate: new Date(),
 		type: Titanium.UI.PICKER_TYPE_DATE
@@ -21,7 +22,6 @@ exports.EditExpirationWindow = function(win, expiration) {
 	
 	var expirationTimeField = Ti.UI.createPicker({
 		top: '150dp',
-		hintText: 'Expiration Time',
 		value: expiration,
 		minDate: new Date(),
 		type: Titanium.UI.PICKER_TYPE_TIME
@@ -32,7 +32,7 @@ exports.EditExpirationWindow = function(win, expiration) {
 	});
 	
 	var editButton = Ti.UI.createButton({
-		title: 'Update',
+		title: editExpirationUpdateButton,
 		width: '120dp',
 		height: '40dp',
 		top: '400dp',
@@ -42,17 +42,13 @@ exports.EditExpirationWindow = function(win, expiration) {
 	editButton.addEventListener('click', function() {
 		var expiration = expirationDateField.value;
 		
-		//expiration.setHours(expirationTimeField.value.getHours());
-		//expiration.setMinutes(expirationTimeField.value.getMinutes());
-		//expiration.setSeconds(expirationTimeField.value.getSeconds());
-		
 		win.fireEvent('expirationChoice', {expirationEvent : expiration});
 		
 		self.close();
 	});
 	
 	var cancelButton = Ti.UI.createButton({
-		title: 'Cancel',
+		title: editExpirationCancelButton,
 		width: '120dp',
 		height: '40dp',
 		top: '400dp',
@@ -64,7 +60,6 @@ exports.EditExpirationWindow = function(win, expiration) {
 	});
 	
 	self.add(expirationDateField);
-	//self.add(expirationTimeField);
 	self.add(editButton);
 	self.add(cancelButton);
 	
